@@ -5,6 +5,7 @@
 ![CocoaPods](https://img.shields.io/cocoapods/v/BeyovaJSON.svg)
 
 BeyovaJSON makes it easier to deal with JSON and Coadable in Swift 4.
+Inspired by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
 ## Installation
 
