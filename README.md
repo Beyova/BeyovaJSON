@@ -3,6 +3,7 @@
 [![Travis CI](https://travis-ci.org/Beyova/BeyovaJSON.svg?branch=master)](https://travis-ci.org/Beyova/BeyovaJSON)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![CocoaPods](https://img.shields.io/cocoapods/v/BeyovaJSON.svg)
+![Swift](http://img.shields.io/badge/swift-4.0-brightgreen.svg)
 
 BeyovaJSON makes it easier to deal with JSON and Coadable in Swift 4.
 Inspired by [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
@@ -36,7 +37,7 @@ if let name = users[0]["name"].string {
 }
 ```
 
-Convertion check in Swift is kept:
+Boundary check for conversion in Swift is kept:
 ```swift
 let value: JToken = 9999
 print(value.int8Value) // fatal error
