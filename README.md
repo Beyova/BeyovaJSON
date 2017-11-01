@@ -53,7 +53,7 @@ users[0]["name"] = JToken.init("John")
 #### Expressible
 
 ```swift
-let groups: JToken = [["name": "Tom"],["name": "Jerry"]]
+let users: JToken = [["name": "Tom"],["name": "Jerry"]]
 users[0]["name"] = "John"
 ```
 
