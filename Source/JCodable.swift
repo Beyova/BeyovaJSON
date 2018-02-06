@@ -50,9 +50,6 @@ extension JValue: Codable {
         if let value = try? container.decode(Date.self) {
             self.init(value)
         }
-        else if let value = try? container.decode(Data.self) {
-            self.init(value)
-        }
         else if let value = try? container.decode(String.self) {
             self.init(value)
         }

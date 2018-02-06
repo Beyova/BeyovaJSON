@@ -64,6 +64,9 @@ public struct JValue {
     }
     
     public var bytesValue: Data {
+        if let val = _value as? String, let data = Data(base64Encoded: val) {
+            return data
+        }
         guard let val = _value as? Data else {
             fatalError(fatalMessage("Data"))
         }

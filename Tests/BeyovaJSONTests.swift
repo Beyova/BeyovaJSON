@@ -51,6 +51,15 @@ class BeyovaJSONTests: XCTestCase {
         XCTAssertTrue(val.intValue == 111111)
     }
     
+    func testData() {
+        let s = "speaking"
+        let data = Data(base64Encoded: s)!
+        let val = JToken.init(data)
+        XCTAssertEqual(val.bytesValue, data)
+        let val2 = JToken.init(s)
+        XCTAssertEqual(val2.bytesValue, data)
+    }
+    
     func testAppend() {
         var array: JToken = []
         array.append(1.1)
@@ -83,8 +92,6 @@ class BeyovaJSONTests: XCTestCase {
     }
     
     func testRaw() throws {
-//        JToken.encoder.dateEncodingStrategy = .iso8601
-//        JToken.decoder.dateDecodingStrategy = .iso8601
         let token: JToken = ["dateTest":Date(),"key1":1.1,"key2":["sub",1,["subsub"]]]
         let data = try token.rawData(formatting: .prettyPrinted)
         print(String(data: data, encoding: .utf8)!)
@@ -92,7 +99,7 @@ class BeyovaJSONTests: XCTestCase {
     
     func testCoding() {
         let user = User()
-        user.AnyThing = ["dateTest":Date(),"key1":1.1,"key2":["sub",1,["subsub"]]]
+        user.AnyThing = ["dateTest":Date(),"dataTest":"speaking","key1":1.1,"key2":["sub",1,["subsub"]]]
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         let data = try! encoder.encode(user)
@@ -102,5 +109,8 @@ class BeyovaJSONTests: XCTestCase {
         let decoder = JSONDecoder()
         let user2 = try! decoder.decode(User.self, from: data)
         print(user2.AnyThing)
+        let dataToken = user2.AnyThing["dataTest"]
+        XCTAssertEqual(dataToken.stringValue, "speaking")
+        XCTAssertEqual(dataToken.bytesValue.count, 6)
     }
 }
