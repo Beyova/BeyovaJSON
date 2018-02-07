@@ -1,0 +1,209 @@
+{
+    "Key": "video-select",
+    "Questions": [
+                  {
+                  "Key": "q1",
+                  "Body": {
+                  "version": "1",
+                  "skillSet": "listening",
+                  "mode": "short-text-response",
+                  "options": [
+                              {
+                              "id": "0",
+                              "text": "chair"
+                              },
+                              {
+                              "id": "1",
+                              "text": "book"
+                              },
+                              {
+                              "id": "2",
+                              "text": "pen"
+                              },
+                              {
+                              "id": "3",
+                              "text": "pencil"
+                              },
+                              {
+                              "id": "4",
+                              "text": "glass"
+                              },
+                              {
+                              "id": "5",
+                              "text": "glue"
+                              }
+                              ],
+                  "answers": [
+                              [
+                               "0"
+                               ]
+                              ],
+                  "tests": [
+                            {
+                            "id": "0",
+                            "text": "I'm Mel, what do I have?",
+                            "audio": "local://bundle/Mockup/Resource/I'm Mel.mp3"
+                            }
+                            ]
+                  }
+                  },
+                  {
+                  "Key": "q2",
+                  "Body": {
+                  "version": "1",
+                  "skillSet": "listening",
+                  "mode": "image-response",
+                  "options": [
+                              {
+                              "id": "0",
+                              "image": "local://bundle/Mockup/Resource/pen.png"
+                              },
+                              {
+                              "id": "1",
+                              "image": "local://bundle/Mockup/Resource/chair.png"
+                              },
+                              {
+                              "id": "2",
+                              "image": "local://bundle/Mockup/Resource/pencil.png"
+                              },
+                              {
+                              "id": "3",
+                              "image": "local://bundle/Mockup/Resource/glue.png"
+                              }
+                              ],
+                  "answers": [
+                              [
+                               "0"
+                               ]
+                              ],
+                  "tests": [
+                            {
+                            "id": "0",
+                            "text": "Roddy, what do you have?",
+                            "audio": "local://bundle/Mockup/Resource/I'm Roddy.mp3"
+                            }
+                            ]
+                  }
+                  },
+                  {
+                  "Key": "q3",
+                  "Body": {
+                  "version": "1",
+                  "skillSet": "listening",
+                  "mode": "long-text-response",
+                  "options": [
+                              {
+                              "id": "0",
+                              "text": "She is a very beutiful girl."
+                              },
+                              {
+                              "id": "1",
+                              "text": "He is a hansome man."
+                              },
+                              {
+                              "id": "2",
+                              "text": "Maybe, he is a teacher."
+                              }
+                              ],
+                  "answers": [
+                              [
+                               "0"
+                               ]
+                              ],
+                  "tests": [
+                            {
+                            "id": "0",
+                            "text": "Which one is wrong about Ben?",
+                            "audio": "local://bundle/Mockup/Resource/I'm Mel.mp3"
+                            }
+                            ]
+                  }
+                  },
+                  {
+                  "Key": "q4",
+                  "Body": {
+                  "version": "1",
+                  "skillSet": "listening",
+                  "mode": "short-text-response",
+                  "options": [
+                              {
+                              "id": "0",
+                              "text": "I have a chair"
+                              },
+                              {
+                              "id": "1",
+                              "text": "I have a book"
+                              },
+                              {
+                              "id": "2",
+                              "text": "I have a pen"
+                              },
+                              {
+                              "id": "3",
+                              "text": "I have a pencil"
+                              }
+                              ],
+                  "answers": [
+                              [
+                               "0"
+                               ]
+                              ],
+                  "tests": [
+                            {
+                            "id": "0",
+                            "text": "I'm Mel, what do I have?",
+                            "audio": "local://bundle/Mockup/Resource/0.1 ben what's this.mp3"
+                            }
+                            ]
+                  }
+                  }
+                  ],
+    "Type": "video",
+    "Stimulus": [
+                 {
+                 "Key": "s1",
+                 "Body": {
+                 "item": {
+                 "video": "local://bundle/Mockup/Resource/CircleTimeVideo.mp4"
+                 }
+                 }
+                 }
+                 ],
+    "Body": {
+        "mappings": [
+                     {
+                     "s": "s1",
+                     "q": "q1",
+                     "anchor": [
+                                5.0,
+                                15.0
+                                ]
+                     },
+                     {
+                     "s": "s1",
+                     "q": "q2",
+                     "anchor": [
+                                25.0,
+                                35.0
+                                ]
+                     },
+                     {
+                     "s": "s1",
+                     "q": "q3",
+                     "anchor": [
+                                66.0,
+                                88.0
+                                ]
+                     },
+                     {
+                     "s": "s1",
+                     "q": "q4",
+                     "anchor": [
+                                100.0,
+                                110.0
+                                ]
+                     }
+                     ]
+    },
+    "Title": "Activity 9 - Video"
+}

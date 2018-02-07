@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571B4217202AE1AE00D85E4B /* JCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B4216202AE1AE00D85E4B /* JCodableTests.swift */; };
+		571B4218202AE1AE00D85E4B /* JCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571B4216202AE1AE00D85E4B /* JCodableTests.swift */; };
 		57A1B41C1FA332860033C0AE /* BeyovaJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1B3FE1FA3324C0033C0AE /* BeyovaJSON.framework */; };
 		57A1B42B1FA332BE0033C0AE /* BeyovaJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A1B40B1FA3326D0033C0AE /* BeyovaJSON.framework */; };
 		57A1B43F1FA335B40033C0AE /* JConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B4391FA335B40033C0AE /* JConvertable.swift */; };
@@ -21,8 +23,8 @@
 		57A1B4481FA335B40033C0AE /* JToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B43D1FA335B40033C0AE /* JToken.swift */; };
 		57A1B4491FA335B40033C0AE /* JValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B43E1FA335B40033C0AE /* JValue.swift */; };
 		57A1B44A1FA335B40033C0AE /* JValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B43E1FA335B40033C0AE /* JValue.swift */; };
-		57A1B44C1FA336D20033C0AE /* BeyovaJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B44B1FA336D20033C0AE /* BeyovaJSONTests.swift */; };
-		57A1B44D1FA336D20033C0AE /* BeyovaJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B44B1FA336D20033C0AE /* BeyovaJSONTests.swift */; };
+		57A1B44C1FA336D20033C0AE /* JTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B44B1FA336D20033C0AE /* JTokenTests.swift */; };
+		57A1B44D1FA336D20033C0AE /* JTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A1B44B1FA336D20033C0AE /* JTokenTests.swift */; };
 		A4B7539F1FA453E2003FEEFE /* JComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7539E1FA453E2003FEEFE /* JComparable.swift */; };
 		A4B753A01FA453E2003FEEFE /* JComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7539E1FA453E2003FEEFE /* JComparable.swift */; };
 		A4B753A21FA467F5003FEEFE /* JRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B753A11FA467F5003FEEFE /* JRawRepresentable.swift */; };
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571B4216202AE1AE00D85E4B /* JCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCodableTests.swift; sourceTree = "<group>"; };
 		57A1B3FE1FA3324C0033C0AE /* BeyovaJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeyovaJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A1B40B1FA3326D0033C0AE /* BeyovaJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BeyovaJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57A1B4171FA332860033C0AE /* BeyovaJSON iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BeyovaJSON iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +65,7 @@
 		57A1B43C1FA335B40033C0AE /* JExpressible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JExpressible.swift; sourceTree = "<group>"; };
 		57A1B43D1FA335B40033C0AE /* JToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JToken.swift; sourceTree = "<group>"; };
 		57A1B43E1FA335B40033C0AE /* JValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JValue.swift; sourceTree = "<group>"; };
-		57A1B44B1FA336D20033C0AE /* BeyovaJSONTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeyovaJSONTests.swift; sourceTree = "<group>"; };
+		57A1B44B1FA336D20033C0AE /* JTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTokenTests.swift; sourceTree = "<group>"; };
 		A4B7539E1FA453E2003FEEFE /* JComparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JComparable.swift; sourceTree = "<group>"; };
 		A4B753A11FA467F5003FEEFE /* JRawRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JRawRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +145,8 @@
 		57A1B4361FA334950033C0AE /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				57A1B44B1FA336D20033C0AE /* BeyovaJSONTests.swift */,
+				57A1B44B1FA336D20033C0AE /* JTokenTests.swift */,
+				571B4216202AE1AE00D85E4B /* JCodableTests.swift */,
 				57A1B4371FA334950033C0AE /* Info-iOS.plist */,
 				57A1B4381FA334950033C0AE /* Info-macOS.plist */,
 			);
@@ -357,7 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A1B44C1FA336D20033C0AE /* BeyovaJSONTests.swift in Sources */,
+				57A1B44C1FA336D20033C0AE /* JTokenTests.swift in Sources */,
+				571B4217202AE1AE00D85E4B /* JCodableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A1B44D1FA336D20033C0AE /* BeyovaJSONTests.swift in Sources */,
+				57A1B44D1FA336D20033C0AE /* JTokenTests.swift in Sources */,
+				571B4218202AE1AE00D85E4B /* JCodableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

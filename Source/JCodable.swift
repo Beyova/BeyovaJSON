@@ -10,18 +10,11 @@ import Foundation
 extension JToken: Codable {
     
     public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if container.decodeNil() {
-            self = .null
+        if let keyed = try? decoder.container(keyedBy: JCodingKey.self) {
+            self = try JToken.decode(from: keyed)
         }
-        else if let array = try? container.decode([JToken].self) {
-            self = .array(.init(array))
-        }
-        else if let dict = try? container.decode([String: JToken].self) {
-            self = .object(.init(dict))
-        }
-        else if let val = try? container.decode(JValue.self) {
-            self = .simple(val)
+        else if let unkeyed = try? decoder.unkeyedContainer() {
+            self = try JToken.decode(from: unkeyed)
         }
         else {
             throw DecodingError.dataCorrupted(.init(codingPath: decoder.codingPath, debugDescription: ""))
@@ -41,16 +34,58 @@ extension JToken: Codable {
             try container.encode(value.item)
         }
     }
+    
+    private static func decode(from container: KeyedDecodingContainer<JCodingKey>) throws -> JToken {
+        var dict = [String:JToken]()
+        for key in container.allKeys {
+            if try container.decodeNil(forKey: key) {
+                dict[key.stringValue] = .null
+            }
+            else if let keyed = try? container.nestedContainer(keyedBy: JCodingKey.self, forKey: key) {
+                dict[key.stringValue] = try JToken.decode(from: keyed)
+            }
+            else if let unkeyed = try? container.nestedUnkeyedContainer(forKey: key) {
+                dict[key.stringValue] = try JToken.decode(from: unkeyed)
+            }
+            else if let val = try? container.decode(JValue.self, forKey: key) {
+                dict[key.stringValue] = .simple(val)
+            }
+            else {
+                throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath, debugDescription: ""))
+            }
+        }
+        return .object(.init(dict))
+    }
+    
+    private static func decode(from container: UnkeyedDecodingContainer) throws -> JToken {
+        var container = container
+        var array = [JToken]()
+        while !container.isAtEnd {
+            if try container.decodeNil() {
+                array.append(.null)
+            }
+            else if let keyed = try? container.nestedContainer(keyedBy: JCodingKey.self) {
+                array.append(try JToken.decode(from: keyed))
+            }
+            else if let unkeyed = try? container.nestedUnkeyedContainer() {
+                array.append(try JToken.decode(from: unkeyed))
+            }
+            else if let val = try? container.decode(JValue.self) {
+                array.append(.simple(val))
+            }
+            else {
+                throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath, debugDescription: ""))
+            }
+        }
+        return .array(.init(array))
+    }
 }
 
 extension JValue: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let value = try? container.decode(Date.self) {
-            self.init(value)
-        }
-        else if let value = try? container.decode(String.self) {
+        if let value = try? container.decode(String.self) {
             self.init(value)
         }
         else if let value = try? container.decode(Bool.self) {
@@ -105,5 +140,21 @@ extension JValue: Codable {
         default:
             throw EncodingError.invalidValue(value, .init(codingPath: container.codingPath, debugDescription: ""))
         }
+    }
+}
+
+class JCodingKey: CodingKey {
+    
+    var stringValue: String
+    
+    required init?(stringValue: String) {
+        self.stringValue = stringValue
+    }
+    
+    var intValue: Int?
+    
+    required init?(intValue: Int) {
+        self.intValue = intValue
+        stringValue = ""
     }
 }

@@ -57,6 +57,9 @@ public struct JValue {
     }
     
     public var dateValue: Date {
+        if let val = _value as? Double {
+            return Date(timeIntervalSince1970: val)
+        }
         guard let val = _value as? Date else {
             fatalError(fatalMessage("Date"))
         }

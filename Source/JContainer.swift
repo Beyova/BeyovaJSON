@@ -114,6 +114,8 @@ extension JToken: Collection {
             return .array(value.item.startIndex)
         case .object(let value):
             return .dictionary(value.item.startIndex)
+        case .null:
+            return JIndex.array(0)
         default:
             fatalError()
         }
@@ -125,6 +127,8 @@ extension JToken: Collection {
             return .array(value.item.endIndex)
         case .object(let value):
             return .dictionary(value.item.endIndex)
+        case .null:
+            return JIndex.array(0)
         default:
             fatalError()
         }
