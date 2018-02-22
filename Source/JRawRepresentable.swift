@@ -28,3 +28,16 @@ extension JSON: RawRepresentable {
         }
     }
 }
+
+extension JSON: CustomStringConvertible {
+    
+    public var description: String {
+        
+        var ret: String? = nil
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(self) {
+            ret = String(data: data, encoding: .utf8)
+        }
+        return ret ?? "<<error>>"
+    }
+}

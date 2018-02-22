@@ -73,6 +73,8 @@ extension JSON: Codable {
                 try container.encode(val, forKey: key)
             case let val as UInt64:
                 try container.encode(val, forKey: key)
+            case is NSNull:
+                try container.encodeNil(forKey: key)
             default:
                 throw EncodingError.invalidValue(v, .init(codingPath: container.codingPath, debugDescription: ""))
             }
@@ -119,6 +121,8 @@ extension JSON: Codable {
                 try container.encode(val)
             case let val as UInt64:
                 try container.encode(val)
+            case is NSNull:
+                try container.encodeNil()
             default:
                 throw EncodingError.invalidValue(v, .init(codingPath: container.codingPath, debugDescription: ""))
             }

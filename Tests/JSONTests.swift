@@ -53,32 +53,25 @@ class JSONTests: XCTestCase {
         super.tearDown()
     }
     
-    func testCoding() {
-        let json:JSON = ["key1":1.1,"key2":["sub",1,["subsub"]], "key3":Date()]
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let data = try! encoder.encode(json)
-        let s = String(bytes: data, encoding: .utf8)!
-        print(s)
-        
+    func testCoding() throws {
+        let json:JSON = ["key1":1.1,"key2":["sub",1,NSNull(),["subsub"]], "key3":Date(), "key4": NSNull()]
         let decoder = JSONDecoder()
-        let json2 = try! decoder.decode(JSON.self, from: data)
-        
-        print(json2.value)
+        let json2 = try decoder.decode(JSON.self, from: json.rawValue)
+        XCTAssertEqual(json.description, json2.description)
     }
     
     func testSubDecoding() throws {
         let obj = ["AnyThing": ["s":"s1","q":"q1","t":"t1"], "Name": "name1"] as [String : Any]
-        let data = try! JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
-        print(String(data: data, encoding: .utf8)!)
+        let data = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
         let decoder = JSONDecoder()
         let r = try decoder.decode(Customer.self, from: data)
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let bytes = try encoder.encode(r)
-        let s = String(bytes: bytes, encoding: .utf8)!
-        print(s)
         XCTAssertEqual(obj["Name"] as! String, r.Name)
     }
-
+    
+    func testEmpty() throws {
+        let json1: JSON = [:]
+        XCTAssertEqual("{}", json1.description)
+        let json2: JSON = []
+        XCTAssertEqual("[]", json2.description)
+    }
 }
