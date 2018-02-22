@@ -1,8 +1,8 @@
 //
-//  JCodableTests.swift
+//  JSONTests.swift
 //  BeyovaJSON
 //
-//  Created by canius.chu on 7/2/2018.
+//  Created by canius.chu on 22/2/2018.
 //  Copyright © 2018 Beyova. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import XCTest
 @testable import BeyovaJSON
 
 class User: Codable {
-    var AnyThing: JToken = .null
+    var AnyThing: JSON = .init()
 }
 
 class Customer: User {
@@ -40,7 +40,8 @@ class Customer: User {
     
 }
 
-class JCodableTests: XCTestCase {
+
+class JSONTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -53,20 +54,17 @@ class JCodableTests: XCTestCase {
     }
     
     func testCoding() {
-        let user = User()
-        user.AnyThing = ["dateTest":Date(),"dataTest":"speaking","key1":1.1,"key2":["sub",1,["subsub"]]]
+        let json:JSON = ["key1":1.1,"key2":["sub",1,["subsub"]], "key3":Date()]
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let data = try! encoder.encode(user)
+        let data = try! encoder.encode(json)
         let s = String(bytes: data, encoding: .utf8)!
         print(s)
         
         let decoder = JSONDecoder()
-        let user2 = try! decoder.decode(User.self, from: data)
-        print(user2.AnyThing)
-        let dataToken = user2.AnyThing["dataTest"]
-        XCTAssertEqual(dataToken.stringValue, "speaking")
-        XCTAssertEqual(dataToken.bytesValue.count, 6)
+        let json2 = try! decoder.decode(JSON.self, from: data)
+        
+        print(json2.value)
     }
     
     func testSubDecoding() throws {
@@ -80,5 +78,7 @@ class JCodableTests: XCTestCase {
         let bytes = try encoder.encode(r)
         let s = String(bytes: bytes, encoding: .utf8)!
         print(s)
+        XCTAssertEqual(obj["Name"] as! String, r.Name)
     }
+
 }

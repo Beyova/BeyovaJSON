@@ -2,55 +2,59 @@
 //  JExpressible.swift
 //  BeyovaJSON
 //
-//  Copyright © 2017 Beyova. All rights reserved.
+//  Copyright © 2018 Beyova. All rights reserved.
 //
 
 import Foundation
 
-extension JToken: ExpressibleByStringLiteral {
+extension JSON: ExpressibleByStringLiteral {
     
     public init(stringLiteral value: StringLiteralType) {
-        self = .simple(.init(value))
+        self.init(value)
     }
     
     public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
-        self = .simple(.init(value))
+        self.init(value)
     }
     
     public init(unicodeScalarLiteral value: StringLiteralType) {
-        self = .simple(.init(value))
+        self.init(value)
     }
 }
 
-extension JToken: ExpressibleByIntegerLiteral {
+extension JSON: ExpressibleByIntegerLiteral {
     
     public init(integerLiteral value: Int) {
-        self = .simple(.init(value))
+        self.init(value)
     }
 }
 
-extension JToken: Swift.ExpressibleByFloatLiteral {
+extension JSON: ExpressibleByFloatLiteral {
     
     public init(floatLiteral value: FloatLiteralType) {
-        self = .simple(.init(value))
+        self.init(value)
     }
 }
 
-extension JToken: ExpressibleByBooleanLiteral {
+extension JSON: ExpressibleByBooleanLiteral {
     
     public init(booleanLiteral value: Bool) {
-        self = .simple(.init(value))
+        self.init(value)
     }
 }
 
-extension JToken: ExpressibleByDictionaryLiteral {
+extension JSON: ExpressibleByDictionaryLiteral {
     
     public init(dictionaryLiteral elements: (String, Any)...) {
-        self.init(elements)
+        var dict = [String:Any]()
+        for (k,v) in elements {
+            dict[k] = v
+        }
+        self.init(dict)
     }
 }
 
-extension JToken: ExpressibleByArrayLiteral {
+extension JSON: ExpressibleByArrayLiteral {
     
     public init(arrayLiteral elements: Any...) {
         self.init(elements)

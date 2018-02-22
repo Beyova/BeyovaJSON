@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name        = "BeyovaJSON"
-  s.version     = "0.0.3"
-  s.summary     = "BeyovaJSON makes it easy to deal with JSON and Codable in Swift"
+  s.version     = "0.0.4"
+  s.summary     = "BeyovaJSON allows any json for Coadable in Swift 4"
   s.homepage    = "https://github.com/Beyova/BeyovaJSON"
   s.license     = { :type => "MIT" }
   s.authors     = { "canius" => "canius.chu@outlook.com" }
