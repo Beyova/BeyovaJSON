@@ -11,12 +11,13 @@ public struct JSON {
     
     public private(set) var value: Any
     
-    init() {
+    public init() {
         self.value = NSNull()
     }
     
-    init(_ value: Any?) {
+    public init(_ value: Any?) {
         if let val = value {
+            //TODO: check if jsonable
             self.value = val
         }
         else {
