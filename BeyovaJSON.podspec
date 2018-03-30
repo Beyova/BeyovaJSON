@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "BeyovaJSON"
-  s.version     = "0.0.6"
+  s.version     = "0.0.7"
   s.summary     = "BeyovaJSON allows any json for Coadable in Swift 4"
   s.homepage    = "https://github.com/Beyova/BeyovaJSON"
   s.license     = { :type => "MIT" }

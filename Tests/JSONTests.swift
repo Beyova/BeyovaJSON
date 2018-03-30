@@ -68,6 +68,13 @@ class JSONTests: XCTestCase {
         XCTAssertEqual(obj["Name"] as! String, r.Name)
     }
     
+    func testSubEncoding() throws {
+        let customer = Customer()
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(customer)
+        print(String.init(data: data, encoding: .utf8)!)
+    }
+    
     func testEmpty() throws {
         let json1: JSON = [:]
         XCTAssertEqual("{}", json1.description)

@@ -22,6 +22,11 @@ extension JSON: Codable {
     }
     
     public func encode(to encoder: Encoder) throws {
+        
+        if try JSON.encode(simple: self.value, from: encoder.singleValueContainer()) {
+            return
+        }
+        
         switch self.value {
         case let val as [String:Any]:
             try JSON.encode(dict: val, from: encoder.container(keyedBy: JCodingKey.self))
@@ -127,6 +132,49 @@ extension JSON: Codable {
                 throw EncodingError.invalidValue(v, .init(codingPath: container.codingPath, debugDescription: ""))
             }
         }
+    }
+    
+    private static func encode(simple: Any, from container: SingleValueEncodingContainer) throws -> Bool  {
+        var container = container
+        switch simple {
+        case is NSNull:
+            try container.encodeNil()
+        case let val as String:
+            try container.encode(val)
+        case let val as Int:
+            try container.encode(val)
+        case let val as Bool:
+            try container.encode(val)
+        case let val as Date:
+            try container.encode(val)
+        case let val as Data:
+            try container.encode(val)
+        case let val as Float:
+            try container.encode(val)
+        case let val as Double:
+            try container.encode(val)
+        case let val as Decimal:
+            try container.encode(val)
+        case let val as Int8:
+            try container.encode(val)
+        case let val as Int16:
+            try container.encode(val)
+        case let val as Int32:
+            try container.encode(val)
+        case let val as Int64:
+            try container.encode(val)
+        case let val as UInt8:
+            try container.encode(val)
+        case let val as UInt16:
+            try container.encode(val)
+        case let val as UInt32:
+            try container.encode(val)
+        case let val as UInt64:
+            try container.encode(val)
+        default:
+            return false
+        }
+        return true
     }
     
     private static func decode(from container: KeyedDecodingContainer<JCodingKey>) throws -> [String:Any] {
