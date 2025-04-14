@@ -16,7 +16,11 @@ struct JValueTests {
   @Test func testEncode() throws {
     let json: JValue = ["key1":nil,"key2":1,"key3":1.1,"key4":[1,nil,"a"]]
     let string = #"{"key1":null,"key2":1,"key3":1.1,"key4":[1,null,"a"]}"#
-    #expect(json.debugDescription == string)
+    let encoder = JSONEncoder()
+    encoder.outputFormatting = .sortedKeys
+    let data = try encoder.encode(json)
+    let encoded = String(data: data, encoding: .utf8)!
+    #expect(string == encoded)
   }
   
   @Test func testDecode() throws {
